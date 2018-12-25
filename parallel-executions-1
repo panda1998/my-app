@@ -5,10 +5,6 @@ node{
         stage('one'){
            git url: 'https://github.com/panda1998/my-app', branch: 'master' 
         }
-    }, secondBranch: {
-       stage('Two'){
-           git url: 'https://github.com/panda1998/my-app', branch: 'feature-1'  
-       }
-    },
+    }, 
     failFast: true
 }
