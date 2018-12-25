@@ -1,10 +1,18 @@
+pipeline {
 
+    stage('Upload') {
 
-node{
- parallel firstBranch: {
-        stage('one'){
-           git url: 'https://github.com/panda1998/my-app', branch: 'master' 
-        }
-    }, 
-    failFast: true
-}
+        dir('/var/lib/jenkins/workspace'){
+
+            pwd(); //Log current directory
+
+            withAWS(region:'us-east-1') {
+
+                 def identity=awsIdentity();//Log AWS credentials
+
+                // Upload files from working directory 'dist' in your project workspace
+                s3Upload(bucket:"yourBucketName", workingDir:'dist', includePathPattern:'**/*');
+            }
+
+        }}
+   }
