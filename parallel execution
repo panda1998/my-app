@@ -1,11 +1,11 @@
 node{
  parallel firstBranch: {
         stage('one'){
-           git url: 'http://github.com/javahometech/my-app', branch: 'master123' 
+           git url: 'https://github.com/panda1998/my-app', branch: 'master' 
         }
     }, secondBranch: {
        stage('Two'){
-           git url: 'http://github.com/javahometech/my-app', branch: 'feature-1'  
+           git url: 'https://github.com/panda1998/my-app', branch: 'feature-1'  
        }
     },
     failFast: true
