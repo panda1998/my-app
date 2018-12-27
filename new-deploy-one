@@ -27,8 +27,7 @@ git 'https://github.com/kliakos/sparkjava-war-example.git'
   steps {
 sshagent(['2e343adf-e8d9-4bf0-a372-90aff675fa40']) {
     sh "scp -o StrictHostKeyChecking=no target/*.war ubuntu@3.86.70.227:/opt/tomcat/webapps"
-}
+      }
 	}
 	}
-	}
-
+	} }
