@@ -1,5 +1,9 @@
 node{
  parallel firstBranch: {
+        stage('approve')
+          { 
+          input('Do you want to proceed?')
+          }
         stage('one'){
            git url: 'https://github.com/panda1998/my-app', branch: 'master' 
         }
