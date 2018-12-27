@@ -19,7 +19,7 @@ node {
    }
    stage('complie package')
     {
-     def mvnHome =  tool name: 'maven-3.5.0', type: 'maven
+     def mvnHome =  tool name: 'maven-3.5.0', type: 'maven'
      sh "${mvnHome}/bin/mvn package"
     }
 }
