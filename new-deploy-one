@@ -13,8 +13,7 @@ echo "M2_HOME = ${M2_HOME}"
 '''
 }
 }
-node {
-  stage('scm'){
+ stage('scm'){
     git 'https://github.com/kliakos/sparkjava-war-example.git'
    }
    stage('complie package')
