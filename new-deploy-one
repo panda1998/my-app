@@ -13,16 +13,12 @@ echo "M2_HOME = ${M2_HOME}"
 '''
 }
 }
- stage('scm'){
-    git 'https://github.com/kliakos/sparkjava-war-example.git'
-   }
-   stage('complie package')
-    {
-     def mvnHome =  tool name: 'maven-3.5.0', type: 'maven'
-     sh "${mvnHome}/bin/mvn package"
-    }
-}
-stage('compile'){
+ stage('scm') {
+steps {
+git 'https://github.com/kliakos/sparkjava-war-example.git'
+  }
+  }
+  stage('compile'){
   steps {
     sh 'mvn package'
   }
