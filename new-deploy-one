@@ -1,0 +1,39 @@
+pipeline {
+agent any
+tools {
+maven 'maven-3.5.0'
+jdk 'jdk1.8'
+}
+stages {
+stage ('Initialize') {
+steps {
+sh '''
+echo "PATH = ${PATH}"
+echo "M2_HOME = ${M2_HOME}"
+'''
+}
+}
+node {
+  stage('scm'){
+    git 'https://github.com/kliakos/sparkjava-war-example.git'
+   }
+   stage('complie package')
+    {
+     def mvnHome =  tool name: 'maven-3.5.0', type: 'maven
+     sh "${mvnHome}/bin/mvn package"
+    }
+}
+stage('compile'){
+  steps {
+    sh 'mvn package'
+  }
+  }
+  stage ('Deploy'){
+  steps {
+sshagent(['2e343adf-e8d9-4bf0-a372-90aff675fa40']) {
+    sh "scp -o StrictHostKeyChecking=no target/*.war ubuntu@3.86.70.227:/opt/tomcat/webapps"
+}
+	}
+	}
+	}
+}
