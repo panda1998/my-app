@@ -23,7 +23,7 @@ git 'https://github.com/kliakos/sparkjava-war-example.git'
     sh 'mvn package'
   }
   }
-  stage ('Deploy'){
+  stage ('Deploy-to -appserver'){
   steps {
 sshagent(['3e306f8f-8828-4042-be18-82f505955d0e']) {
     sh "scp -o StrictHostKeyChecking=no target/*.war ubuntu@34.229.188.62:/opt/tomcat8/webapps"
