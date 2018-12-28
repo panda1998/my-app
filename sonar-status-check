@@ -18,17 +18,17 @@ pipeline
        echo "M2_HOME = ${M2_HOME}"
        '''
      }}
-     stage ('Compile-Package') {
+     stage ('package-complie') {
             steps {
                 git "https://github.com/panda1998/my-app"
               sh 'mvn clean package'
             }
-          post {
-                success {
-                    archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
-                    junit '**/target/surefire-reports/*.xml' 
-                }
-            }
+          //post {
+               // success {
+                   // archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                   // junit '**/target/surefire-reports/*.xml' 
+               // }
+           // }
       }
    //stage('SonarQube Analysis') {
        // def mvnHome =  tool name: 'maven-3.5.0'
