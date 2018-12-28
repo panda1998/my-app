@@ -46,7 +46,7 @@ pipeline
     stage ('Deploy-to -appserver'){
   steps {
 sshagent(['93a50335-83c8-4b10-913a-42e55f063a3']) {
-    sh  " scp -o StrictHostKeyChecking=no  target/*.war ubuntu@34.204.78.136:/opt/tomcat8/webapps"
+    sh  " scp -o StrictHostKeyChecking=no  target/*.war ubuntu@52.70.15.173:/opt/tomcat8/webapps"
       }
 	}
 	}
@@ -71,7 +71,7 @@ sshagent(['93a50335-83c8-4b10-913a-42e55f063a3']) {
    {
       mail bcc: '', body: '''Hi Welcome to jenkins email alerts
       Thanks
-      rashmi''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'rashmitapanda.1992@gmail.com'
+      rashmi''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'pandarashmi212@gmail.com'
    } }
    stage('Slack Notification'){ 
     steps 
