@@ -12,10 +12,7 @@ tools {
        echo "M2_HOME = ${M2_HOME}"
        '''
      }
-     stage('SCM Checkout'){
-     git 'https://github.com/panda1998/my-app'
-   }
-    stage ('Compile-Package') {
+     stage ('Compile-Package') {
             steps {
                 git "https:/panda1998/github.com//my-app"
               sh 'mvn clean package'
