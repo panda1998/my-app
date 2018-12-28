@@ -45,8 +45,8 @@ pipeline
    // }
     stage ('Deploy-to -appserver'){
   steps {
-sshagent(['3e306f8f-8828-4042-be18-82f505955d0e']) {
-    sh "scp   target/*.war ubuntu@34.204.78.136:/opt/tomcat8/webapps"
+sshagent(['93a50335-83c8-4b10-913a-42e55f063a3']) {
+    sh  " scp -o StrictHostKeyChecking=no  target/*.war ubuntu@34.204.78.136:/opt/tomcat8/webapps"
       }
 	}
 	}
