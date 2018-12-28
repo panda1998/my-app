@@ -9,14 +9,18 @@ pipeline
  stages
  {
  stage('Package'){
+  steps 
+  {
       // Get maven home path
       //def mvnHome =  tool name: 'maven-3.5.0'  
      sh '''
         echo "PATH = ${PATH}"
        echo "M2_HOME = ${M2_HOME}"
        '''
-     }
+     }}
      stage ('Compile-Package') {
+       steps 
+       {
            git "https:/panda1998/github.com//my-app"
               sh 'mvn clean package'
             
@@ -24,7 +28,7 @@ pipeline
                 success {
                     archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
                     junit '**/target/surefire-reports/*.xml' 
-                }}
+                }}}
            
 }
    //stage('SonarQube Analysis') {
@@ -61,17 +65,21 @@ sshagent(['3e306f8f-8828-4042-be18-82f505955d0e']) {
      // }    
    
    stage('Email Notification'){
+   steps 
+   {
       mail bcc: '', body: '''Hi Welcome to jenkins email alerts
       Thanks
       rashmi''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'rashmitapanda.1992@gmail.com'
-   }
-   stage('Slack Notification'){
+   } }
+   stage('Slack Notification'){ 
+    steps 
+    {
        slackSend baseUrl: 'https://hooks.slack.com/services/',
        channel: '#jenkins-pipeline-demo',
        color: 'good', 
        message: 'Welcome to Jenkins, Slack!', 
        teamDomain: 'javahomecloud',
        tokenCredentialId: 'slack-demo'
-   }}
+   }} }
 
 }
