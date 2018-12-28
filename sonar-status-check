@@ -1,12 +1,12 @@
 node{
-   agent any
+   agent ('label slave')
 tools {
    maven 'maven-3.5.0'
     jdk 'jdk1.8'
 }
   stage('Package'){
       // Get maven home path
-      def mvnHome =  tool name: 'maven-3.5.0'  
+      //def mvnHome =  tool name: 'maven-3.5.0'  
      sh '''
         echo "PATH = ${PATH}"
        echo "M2_HOME = ${M2_HOME}"
