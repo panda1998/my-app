@@ -15,12 +15,12 @@ tools {
      stage ('Compile-Package') {
            git "https:/panda1998/github.com//my-app"
               sh 'mvn clean package'
-            }
+            
           post {
                 success {
                     archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
                     junit '**/target/surefire-reports/*.xml' 
-                }
+                }}
            
 }
    //stage('SonarQube Analysis') {
