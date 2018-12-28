@@ -25,12 +25,12 @@ pipeline
                 git "https://github.com/panda1998/my-app"
                  sh 'mvn clean package'
             }
-             // post {
-               // success {
-                   // archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
-                    // junit '**/target/surefire-reports/*.xml' 
-                // }
-              // }
+              post {
+                success {
+                    archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                     junit '**/target/surefire-reports/*.xml' 
+                 }
+                }
             }
       
    //stage('SonarQube Analysis') {
