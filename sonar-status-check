@@ -13,10 +13,21 @@ node{
    
      stage('SonarQube Analysis') {
         def mvnHome =  tool name: 'maven-3.5.0'
-        withSonarQubeEnv('sonarqube -3.2.0') { 
+        withSonarQubeEnv('sonarqube -3.2.0') {
+        sh '''
+        echo "PATH = ${PATH}"
+       echo "M2_HOME = ${M2_HOME}"
+       '''
           sh "${M2_HOME} sonar:sonar"
         }
     }
+    stage ('Deploy-to -appserver'){
+  steps {
+sshagent(['3e306f8f-8828-4042-be18-82f505955d0e']) {
+    sh "scp   target/*.war ubuntu@34.207.238.85:/opt/tomcat8/webapps"
+      }
+	}
+	}
     
     stage("Quality Gate Statuc Check"){
           timeout(time: 1, unit: 'HOURS') {
