@@ -16,7 +16,7 @@ node{
         withSonarQubeEnv('sonar-7.4') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
         }
-    }//
+    }
     
     stage("Quality Gate Statuc Check"){
           timeout(time: 1, unit: 'HOURS') {
