@@ -1,6 +1,6 @@
 pipeline
 {
-   agent (level)
+   agent (label "master")
    tools 
      {
    maven 'maven-3.5.0'
@@ -84,3 +84,4 @@ sshagent(['93a50335-83c8-4b10-913a-42e55f063a31']) {
     echo 'no alerts'
        
    }} }
+}
