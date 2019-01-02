@@ -36,7 +36,7 @@ pipeline
     stage('SonarQube Analysis') {
      steps 
        {
-         def mvnHome =  tool name: 'maven-3.5.0'
+        // def mvnHome =  tool name: 'maven-3.5.0'
          withSonarQubeEnv('sonarqube -7.4') {
          sh '''
          echo "PATH = ${PATH}"
