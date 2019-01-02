@@ -1,5 +1,5 @@
 pipeline {
-agent {lebel "master"}
+agent {label "jenkins load2"}
 tools {
    maven 'maven-3.5.0'
     jdk 'jdk1.8'
