@@ -1,6 +1,6 @@
 pipeline
 {
-   agent any
+   agent (level)
    tools 
      {
    maven 'maven-3.5.0'
@@ -33,18 +33,21 @@ pipeline
                 }
             }
       
-   // stage('SonarQube Analysis') {
-     //steps 
-       //{
-        // def mvnHome =  tool name: 'maven-3.5.0'
-         //withSonarQubeEnv('sonarqube -7.4') {
-         //sh '''
-         //echo "PATH = ${PATH}"
-         //echo "M2_HOME = ${M2_HOME}"
-         //'''
-         // sh "${M2_HOME} sonar:sonar"
-         //} }
-    //}
+    stage('SonarQube Analysis') {
+      steps 
+        {
+      environment {
+    def scannerhome = tool 'sonar-runner'
+       }
+    steps {
+   withSonarQubeEnv ('sonar') 
+{
+sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/sonar-pipeline/my-app-master/src -D sonar.url=http://18.210.6.251:9000/sonar"
+   }
+}
+} 
+         } 
+     }
     stage ('Deploy-to -appserver'){
   steps {
 sshagent(['93a50335-83c8-4b10-913a-42e55f063a31']) {
