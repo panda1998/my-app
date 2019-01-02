@@ -1,5 +1,5 @@
 pipeline {
-agent any
+agent {lebel "master(slave-jenkins-lb)"}
 tools {
    maven 'maven-3.5.0'
     jdk 'jdk1.8'
@@ -26,7 +26,7 @@ git 'https://github.com/kliakos/sparkjava-war-example.git'
   stage ('Deploy-to -appserver'){
   steps {
 sshagent(['3e306f8f-8828-4042-be18-82f505955d0e']) {
-    sh "scp   target/*.war ubuntu@34.229.188.62:/opt/tomcat8/webapps"
+    sh "scp -o StrictHostKeyChecking=no  target/*.war ubuntu@3.81.31.210:/opt/tomcat8/webapps"
       }
 	}
 	}
