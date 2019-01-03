@@ -14,10 +14,11 @@ echo "M2_HOME = ${M2_HOME}"
 }
 }
  stage('scm') {
-steps {
-git 'https://github.com/kliakos/sparkjava-war-example.git'
+   steps {
+  git 'https://github.com/kliakos/sparkjava-war-example.git'
   }
   }
+  
   stage('compile'){
   steps {
     sh 'mvn package'
