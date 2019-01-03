@@ -15,15 +15,14 @@ echo "M2_HOME = ${M2_HOME}"
 }
  stage('scm') {
    steps {
-  git 'https://github.com/kliakos/sparkjava-war-example.git'
-  }
-  }
-  
-  stage('compile'){
-  steps {
-    sh 'mvn package'
-  }
-  }
+    git 'https://github.com/kliakos/sparkjava-war-example.git'
+   }
+   }
+ stage('compile'){
+   steps {
+     sh 'mvn package'
+    }
+   }
   stage ('Deploy-to -appserver'){
   steps {
 sshagent(['93a50335-83c8-4b10-913a-42e55f063a31']) {
